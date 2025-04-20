@@ -5,10 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import "../../../app/globals.css";
 
 const images = [
-  "/img/landing01.jpg",
-  "/img/landing02.jpeg",
-  "/img/landing03.jpg",
-  `/img/landing04.jpg`
+  "/img/advertisement/landing01.jpg",
+  "/img/advertisement/landing02.jpeg",
+  "/img/advertisement/landing03.jpg",
+  `/img/advertisement/landing04.jpg`
 ];
 
 const Advertisement = () => {

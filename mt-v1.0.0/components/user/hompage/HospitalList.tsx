@@ -10,7 +10,7 @@ import "../../../app/globals.css";
 const lato = Lato({ subsets: ["latin"], weight: ["400", "900"] });
 
 
-const Hospitaltap: React.FC = () => {
+const HospitalList: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const router = useRouter();
 
@@ -18,7 +18,7 @@ const Hospitaltap: React.FC = () => {
   }, []);
 
   const navigateToHospitalPage = () => {
-    router.push(`/user/Hospital`);
+    router.push(`/user/hospital`);
   };
 
   return (
@@ -42,8 +42,8 @@ const Hospitaltap: React.FC = () => {
             >
               <div className="relative w-full h-40 rounded-xl overflow-hidden mb-4">
                 <Image
-                  src="/img/hospital1.png"
-                  alt=""
+                  src="/img/hospital/hospital1.png"
+                  alt="Mae Fah Luang University Medical Center Hospital"
                   fill
                   className="object-cover"
                 />
@@ -61,4 +61,4 @@ const Hospitaltap: React.FC = () => {
   );
 };
 
-export default Hospitaltap;
+export default HospitalList;

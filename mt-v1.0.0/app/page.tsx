@@ -2,9 +2,9 @@
 
 import Advertisement from "@/components/user/hompage/Advertisement";
 import "./globals.css";
-import MedicalList from "@/components/user/hompage/MedicalList";
+import MedicalPackageList from "@/components/user/hompage/MedicalPackageList";
 import Footer from "@/components/user/main/Footer";
-import Hospitaltap from "@/components/user/hompage/Hospitaltap";
+import HospitalList from "@/components/user/hompage/HospitalList";
 
 const HomePage = () => {
   return (
@@ -18,8 +18,8 @@ const HomePage = () => {
           Choose the package that's right for you?
         </b>
       </div>
-      <MedicalList />
-      <Hospitaltap />
+      <MedicalPackageList />
+      <HospitalList />
       <Footer />
     </div>
   );
