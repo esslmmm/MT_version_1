@@ -48,7 +48,7 @@ Button B
       <div className="absolute inset-0 flex flex-col items-center justify-end p-6 md:p-16 text-left">
         <div >
         <img
-              src="/img/Footer&Navbar/carepath_logo.png"
+              src="/img/footer/carepath_logo.png"
               alt="Logo"
               className="w-35 h-auto mx-auto"
             />
