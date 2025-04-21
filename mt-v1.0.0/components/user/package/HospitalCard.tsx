@@ -22,7 +22,7 @@ const HospitalCard = () => {
       <div className="flex justify-center items-center w-full bg-white p-4">
         <div className="flex flex-col sm:flex-row items-center p-4 bg-white rounded-xl shadow-md border border-gray-300 w-full max-w-2xl space-y-4 sm:space-y-0 sm:space-x-6">
           {/* Image Section */}
-          <div className="w-90 h-35 sm:w-24 sm:h-24 flex-shrink-0 rounded-lg overflow-hidden">
+          <div className="w-60 h-35 sm:w-24 sm:h-24 flex-shrink-0 rounded-lg overflow-hidden">
             <Image
               src={hospital.image}
               alt={hospital.name}
