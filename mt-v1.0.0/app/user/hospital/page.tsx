@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { MapPin, Star } from "lucide-react";
+import { MapPin } from "lucide-react";
 import Footer from "../../../components/user/main/Footer";
 import "../../../app/globals.css";
 
@@ -23,28 +23,28 @@ const services = [
 const HomePage: React.FC = () => {
   return (
     <div>
-      <div className="max-w-7xl mx-auto  space-y-10  p-20">
+      <div className="max-w-7xl mx-auto space-y-10 p-4 sm:p-8 lg:p-20">
         {/* Header */}
-        <div className="overflow-hidden rounded-2xl  shadow-xl transition-transform duration-300 hover:scale-105 ">
-    <Image
-      src="/img/hospital/hospital1.png"
-      alt="Hospital Building"
-      width={800}
-      height={500}
-      className="object-cover w-full h-auto"
-    />
-  </div>
+        <div className="overflow-hidden rounded-2xl shadow-xl transition-transform duration-300 hover:scale-105">
+          <Image
+            src="/img/hospital/hospital1.png"
+            alt="Hospital Building"
+            width={800}
+            height={500}
+            className="object-cover w-full h-auto"
+          />
+        </div>
 
         {/* Title and Info */}
-        <div className="space-y-2 m-10">
-          <h1 className="text-3xl font-bold text-gray-800">
+        <div className="space-y-2 mt-10 sm:mt-12">
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-800">
             MAE FAH LUANG MEDICAL CENTER HOSPITAL
           </h1>
           <div className="flex items-center text-gray-700">
             <MapPin className="w-5 h-5 mr-1" />
             <p>365 Nang Lae, Mueang Chiang Rai District, Chiang Rai 57100</p>
           </div>
-          <p className="text-gray-600 text-sm max-w-4xl">
+          <p className="text-gray-600 text-sm sm:text-base max-w-4xl">
             MAE FAH LUANG MEDICAL CENTER HOSPITAL was established in 1972 as one
             of the first private hospitals in Thailand. Over the past 50 years
             we have expanded our operations to become a tertiary care facility
@@ -53,9 +53,9 @@ const HomePage: React.FC = () => {
         </div>
 
         {/* Services */}
-        <div className="space-y-4 m-10 ">
-          <h2 className="text-2xl font-semibold text-gray-800">Services</h2>
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
+        <div className="space-y-4 mt-10 sm:mt-12">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-800">Services</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
             {services.map((service) => (
               <div
                 key={service.name}
@@ -63,9 +63,7 @@ const HomePage: React.FC = () => {
               >
                 <div>
                   <div className="text-2xl mb-2">{service.icon}</div>
-                  <p className="text-sm font-medium text-gray-700">
-                    {service.name}
-                  </p>
+                  <p className="text-sm font-medium text-gray-700">{service.name}</p>
                 </div>
               </div>
             ))}
