@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const RoomGallery = () => {
   const images = [
@@ -10,13 +10,27 @@ const RoomGallery = () => {
     "/img/wanasom04.jpg",
     "/img/wanasom05.jpg",
     "/img/wanasom06.jpg",
-    "/img/wanasom08.jpg"
+    "/img/wanasom08.jpg",
   ];
 
-  const [mainImage, setMainImage] = useState(images[0]); // Default main image
-  const maxThumbnails = 3;
+  const [mainImage, setMainImage] = useState(images[0]);
+  const [index, setIndex] = useState(0);
   const [showAll, setShowAll] = useState(false);
+  const maxThumbnails = 3;
   const extraPhotos = images.length - maxThumbnails;
+
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
+  useEffect(() => {
+    if (!isMobile && carouselRef.current) {
+      const scrollX = 88 * index; // 80px thumbnail + 8px gap approx
+      carouselRef.current.scrollTo({
+        left: scrollX,
+        behavior: "smooth",
+      });
+    }
+  }, [index, isMobile]);
 
   return (
     <div className="flex justify-center items-center bg-[#D2ECE4] py-10 px-4">
@@ -33,25 +47,32 @@ const RoomGallery = () => {
         </div>
 
         {/* Thumbnail Images Overlay */}
-        <div className="absolute bottom-4 left-4 flex gap-2 overflow-x-auto touch-auto scrollbar-hide">
-          {(showAll ? images : images.slice(0, maxThumbnails)).map((image, index) => (
-            <div key={index} className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0">
+        <div
+          ref={carouselRef}
+          className="absolute bottom-4 left-4 flex gap-2 overflow-x-auto touch-auto scrollbar-hide"
+        >
+          {(showAll ? images : images.slice(0, maxThumbnails)).map((image, i) => (
+            <div key={i} className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0">
               <Image
                 src={image}
-                alt={`Thumbnail ${index}`}
+                alt={`Thumbnail ${i}`}
                 layout="fill"
                 objectFit="cover"
                 className="cursor-pointer hover:opacity-80 transition"
-                onClick={() => setMainImage(image)} // Change main image on click
+                onClick={() => {
+                  setMainImage(image);
+                  setIndex(i);
+                }}
               />
 
-              {/* Overlay for extra photos */}
-              {!showAll && index === maxThumbnails - 1 && extraPhotos > 0 && (
+              {!showAll && i === maxThumbnails - 1 && extraPhotos > 0 && (
                 <button
                   className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
                   onClick={() => setShowAll(true)}
                 >
-                  <span className="text-white font-semibold text-sm">+{extraPhotos} photos</span>
+                  <span className="text-white font-semibold text-sm">
+                    +{extraPhotos} photos
+                  </span>
                 </button>
               )}
             </div>
