@@ -37,7 +37,7 @@ const HospitalCard = () => {
           <div className="text-center sm:text-left flex-1">
             <h2 className="text-lg text-[#000000] font-semibold">{hospital.name}</h2>
             <p className="flex flex-col sm:flex-row justify-center sm:justify-start items-center text-gray-600 text-sm mt-1 text-center sm:text-left break-words">
-              <FaMapMarkerAlt className="text-red-500 mr-1 mb-1 sm:mb-0" />
+              <FaMapMarkerAlt className="text-red-500 mr-1 mb-1" />
               <span>{hospital.address}</span>
             </p>
 
