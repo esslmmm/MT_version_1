@@ -33,7 +33,7 @@ const RoomGallery = () => {
         </div>
 
         {/* Thumbnail Images Overlay */}
-        <div className="absolute bottom-4 left-4 flex gap-2 overflow-x-auto">
+        <div className="absolute bottom-4 left-4 flex gap-2 overflow-x-auto touch-auto scrollbar-hide">
           {(showAll ? images : images.slice(0, maxThumbnails)).map((image, index) => (
             <div key={index} className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0">
               <Image
