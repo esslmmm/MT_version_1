@@ -4,6 +4,7 @@ import Image from "next/image";
 import { MapPin } from "lucide-react";
 import Footer from "../../../components/user/main/Footer";
 import "../../../app/globals.css";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 const services = [
   { icon: "❤️", name: "Heart" },
@@ -37,14 +38,16 @@ const HomePage: React.FC = () => {
 
         {/* Title and Info */}
         <div className="space-y-2 mt-10 sm:mt-12">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-800">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800">
             MAE FAH LUANG MEDICAL CENTER HOSPITAL
           </h1>
           <div className="flex items-center text-gray-700">
-            <MapPin className="w-5 h-5 mr-1" />
-            <p>365 Nang Lae, Mueang Chiang Rai District, Chiang Rai 57100</p>
+            <FaMapMarkerAlt className="w-4 h-4 text-red-500 mr-2" />
+            <p className="text-xs sm:text-sm lg:text-base">
+              365 Nang Lae, Mueang Chiang Rai District, Chiang Rai 57100
+            </p>
           </div>
-          <p className="text-gray-600 text-sm sm:text-base max-w-4xl">
+          <p className="text-xs sm:text-sm lg:text-base text-gray-600 max-w-4xl">
             MAE FAH LUANG MEDICAL CENTER HOSPITAL was established in 1972 as one
             of the first private hospitals in Thailand. Over the past 50 years
             we have expanded our operations to become a tertiary care facility
@@ -54,7 +57,7 @@ const HomePage: React.FC = () => {
 
         {/* Services */}
         <div className="space-y-4 mt-10 sm:mt-12">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-800">Services</h2>
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-800">Services</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
             {services.map((service) => (
               <div
@@ -63,7 +66,9 @@ const HomePage: React.FC = () => {
               >
                 <div>
                   <div className="text-2xl mb-2">{service.icon}</div>
-                  <p className="text-sm font-medium text-gray-700">{service.name}</p>
+                  <p className="text-xs sm:text-sm lg:text-base font-medium text-gray-700">
+                    {service.name}
+                  </p>
                 </div>
               </div>
             ))}
