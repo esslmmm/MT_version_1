@@ -47,7 +47,7 @@ const MedicalPackageList: React.FC = () => {
                   className="object-cover"
                 />
               </div>
-              <h3 className="text-lg font-bold mb-1">Health Check-up Packages</h3>
+              <h3 className="text-lg text-[#000000] font-bold mb-1">Health Check-up Packages</h3>
               <div className="text-gray-500 flex items-center gap-2 text-sm">
                 <FaMapMarkerAlt className="text-red-400" />
                 Mae Fah Luang University Medical Center Hospital
