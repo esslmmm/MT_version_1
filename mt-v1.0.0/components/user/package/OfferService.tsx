@@ -32,18 +32,25 @@ export default function OfferService() {
   };
 
   return (
-    <div>
-      <div className="bg-green-400 text-center text-green-600  m-10 p-3 mx-50 rounded-2xl hover:bg-green-500 hover:text-white transition duration-300">
-      <button className="px-6 py-2   font-semibold rounded-xl  transition" onClick={navigateToMedicalAppointment}>Book</button>
-      </div>
+    <div className="w-full px-4 sm:px-6 lg:px-8 py-6">
+      {/* Book Button Styled as a Div */}
+        <div
+          onClick={navigateToMedicalAppointment}
+          className="cursor-pointer w-2/3 sm:w-1/2 md:w-2/3 bg-green-400 text-green-600 text-lg px-8 py-4 font-semibold rounded-2xl hover:bg-green-500 hover:text-white transition duration-300 flex justify-center mx-auto"
+        >
+          Book
+        </div>
 
-      <section className="py-12 px-6 bg-white text-center">
+
+
+      {/* Services Section */}
+      <section className="py-12 text-center">
         <h2 className="text-2xl font-bold mb-6">Offer Service</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-white shadow-md rounded-xl p-6 border border-gray-200"
+              className="bg-white shadow-md rounded-xl p-6 border border-gray-200 hover:shadow-lg transition"
             >
               <h3 className="font-semibold text-lg">{service.title}</h3>
               {service.description && (
