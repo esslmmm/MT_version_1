@@ -27,7 +27,7 @@ const HomePage: React.FC = () => {
         {/* Header */}
         <div className="overflow-hidden rounded-2xl  shadow-xl transition-transform duration-300 hover:scale-105 ">
     <Image
-      src="/img/hospital1.png"
+      src="/img/hospital/hospital1.png"
       alt="Hospital Building"
       width={800}
       height={500}
