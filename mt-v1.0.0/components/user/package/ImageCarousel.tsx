@@ -27,11 +27,9 @@ export default function ImageCarousel() {
   const carouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Detect mobile screen
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
-
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -46,6 +44,7 @@ export default function ImageCarousel() {
     }
   }, [isMobile]);
 
+  // Sync scroll to index for desktop
   useEffect(() => {
     if (!isMobile && carouselRef.current) {
       carouselRef.current.scrollTo({
@@ -54,6 +53,16 @@ export default function ImageCarousel() {
       });
     }
   }, [index, isMobile]);
+
+  // Detect scroll position on mobile
+  const handleScroll = () => {
+    if (carouselRef.current && isMobile) {
+      const scrollLeft = carouselRef.current.scrollLeft;
+      const width = carouselRef.current.clientWidth;
+      const newIndex = Math.round(scrollLeft / width);
+      if (newIndex !== index) setIndex(newIndex);
+    }
+  };
 
   const prevSlide = () =>
     setIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
@@ -64,6 +73,7 @@ export default function ImageCarousel() {
       {/* Slide Container */}
       <div
         ref={carouselRef}
+        onScroll={handleScroll}
         className={`flex w-full h-full ${
           isMobile
             ? 'overflow-x-auto snap-x snap-mandatory scroll-smooth touch-pan-x scrollbar-hide'
@@ -73,7 +83,7 @@ export default function ImageCarousel() {
         {slides.map((slide, i) => (
           <div
             key={i}
-            className={`w-full flex-shrink-0 h-full snap-center relative`}
+            className="w-full flex-shrink-0 h-full snap-center relative"
           >
             <img
               src={slide.image}
