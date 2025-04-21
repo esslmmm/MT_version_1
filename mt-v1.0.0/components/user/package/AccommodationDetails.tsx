@@ -1,7 +1,7 @@
 const accommodations = [
     {
       id: 1,
-      name: "Khamthana the Colonial Hotel Chiangrai",
+      name: "Khamthana Hotel",
       address: "651/8 Moo 24 Tambon Robviang, Amphur Muang, ChiangRai 57000",
       rating: 4.5,
       reviews: 377,
