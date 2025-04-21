@@ -1,19 +1,19 @@
 const accommodations = [
     {
       id: 1,
-      name: "Wanasom Resort",
-      address: "333 Moo1 Tambon ThaSud, Amphur Muang, Chiangrai, Tha Sut, Chiang Rai, Thailand, 57100",
-      rating: 4.7,
-      reviews: 480,
+      name: "Khamthana the Colonial Hotel Chiangrai",
+      address: "651/8 Moo 24 Tambon Robviang, Amphur Muang, ChiangRai 57000",
+      rating: 4.5,
+      reviews: 377,
       description:
-        "The car parking and the Wi-Fi are always free, so you can stay in touch and come and go as you please. Conveniently situated in the Tha Sut part of Chiang Rai, this property puts you close to attractions and interesting dining options. Don't leave before paying a visit to the famous Wat Rong Khun. This 3-star property features restaurant to make your stay more indulgent and memorable.",
+        "In addition to the standard of SHA, all guests get free Wi-Fi in all rooms and free parking if arriving by car. Conveniently situated in the City Center part of Chiang Rai, this property puts you close to attractions and interesting dining options. Don't leave before paying a visit to the famous Wat Rong Khun. This 4-star property features outdoor pool to make your stay more indulgent and memorable.",
       facilities: [
         "Free Wi-Fi",
-        "Pool with view",
+        "Swimming pool",
         "Free parking",
-        "Fitness center",
-        "Restaurant",,
-        "24-hour Front Desk",
+        "Front desk [24-hour]",
+        "Mini golf course",
+        "Airport transfer",
       ],
       rooms: [
         { type: "Deluxe Twins", count: 1 },
@@ -33,7 +33,7 @@ const accommodations = [
             <div className="flex-1">
               <h2 className="text-3xl font-bold">{hotel.name}</h2>
               <p className="text-gray-600 mt-2">{hotel.address}</p>
-              <a href="https://maps.app.goo.gl/j6BP8rAziBPpPECbA" className="text-green-500 font-medium mt-2 flex items-center">
+              <a href="https://maps.app.goo.gl/H4JvdSmMiiPFiCsE9" className="text-green-500 font-medium mt-2 flex items-center">
                 See map 📍
               </a>
   

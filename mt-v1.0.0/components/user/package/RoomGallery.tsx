@@ -5,12 +5,11 @@ import { useEffect, useRef, useState } from "react";
 
 const RoomGallery = () => {
   const images = [
-    "/img/wanasom03.jpg",
-    "/img/wanasom01.jpg",
-    "/img/wanasom04.jpg",
-    "/img/wanasom05.jpg",
-    "/img/wanasom06.jpg",
-    "/img/wanasom08.jpg",
+    "/img/hotels/k00.png",
+    "/img/hotels/k01.png",
+    "/img/hotels/k02.png",
+    "/img/hotels/k03.png",
+    "/img/hotels/k04.png",
   ];
 
   const [mainImage, setMainImage] = useState(images[0]);
