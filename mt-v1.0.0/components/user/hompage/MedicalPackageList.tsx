@@ -23,7 +23,7 @@ const MedicalPackageList: React.FC = () => {
 
   return (
     <div className={`${lato.className} container mx-auto p-6 lg:px-16 pb-10 bg-green-50`}>
-      <h2 className="text-3xl font-black mb-2">Medical Package</h2>
+      <h2 className="text-3xl text-[#000000] font-black mb-2">Medical Package</h2>
 
       
         <div
