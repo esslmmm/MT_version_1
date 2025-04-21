@@ -22,7 +22,7 @@ const RoomGallery = () => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
-  // Handle scrolling on desktop to align with the selected index
+  // Sync scroll to index for desktop (scrolls automatically to the selected image)
   useEffect(() => {
     if (!isMobile && carouselRef.current) {
       const scrollX = 88 * index; // 80px thumbnail + 8px gap approx
@@ -47,7 +47,21 @@ const RoomGallery = () => {
     <div className="flex justify-center items-center bg-[#D2ECE4] py-10 px-4">
       <div className="relative w-full max-w-3xl rounded-xl overflow-hidden shadow-lg">
         {/* Main Image */}
-        <div className="w-full">
+        <div
+          className="w-full cursor-pointer"
+          onClick={() => {
+            // Allow the main image to scroll to the next one if needed
+            if (isMobile && carouselRef.current) {
+              const newIndex = (index + 1) % images.length;
+              setIndex(newIndex);
+              setMainImage(images[newIndex]);
+              carouselRef.current.scrollTo({
+                left: 88 * newIndex, // Same width as thumbnails
+                behavior: "smooth",
+              });
+            }
+          }}
+        >
           <Image
             src={mainImage}
             alt="Room Image"
@@ -63,7 +77,7 @@ const RoomGallery = () => {
           onScroll={handleScroll}
           className={`absolute bottom-4 left-4 flex gap-2 ${
             isMobile
-              ? "overflow-x-auto snap-x snap-mandatory scroll-smooth touch-pan-x scrollbar-hide"
+              ? "overflow-x-auto snap-x snap-mandatory scroll-smooth touch-pan-x scrollbar-hide touch-action: pan-x"
               : "overflow-hidden"
           }`}
         >
