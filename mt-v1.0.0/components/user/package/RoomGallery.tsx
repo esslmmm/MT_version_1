@@ -22,6 +22,7 @@ const RoomGallery = () => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
+  // Handle scrolling on desktop to align with the selected index
   useEffect(() => {
     if (!isMobile && carouselRef.current) {
       const scrollX = 88 * index; // 80px thumbnail + 8px gap approx
@@ -31,6 +32,16 @@ const RoomGallery = () => {
       });
     }
   }, [index, isMobile]);
+
+  // Handle scroll position on mobile
+  const handleScroll = () => {
+    if (carouselRef.current && isMobile) {
+      const scrollLeft = carouselRef.current.scrollLeft;
+      const width = carouselRef.current.clientWidth;
+      const newIndex = Math.round(scrollLeft / width);
+      if (newIndex !== index) setIndex(newIndex);
+    }
+  };
 
   return (
     <div className="flex justify-center items-center bg-[#D2ECE4] py-10 px-4">
@@ -49,7 +60,12 @@ const RoomGallery = () => {
         {/* Thumbnail Images Overlay */}
         <div
           ref={carouselRef}
-          className="absolute bottom-4 left-4 flex gap-2 overflow-x-auto touch-auto scrollbar-hide"
+          onScroll={handleScroll}
+          className={`absolute bottom-4 left-4 flex gap-2 ${
+            isMobile
+              ? "overflow-x-auto snap-x snap-mandatory scroll-smooth touch-pan-x scrollbar-hide"
+              : "overflow-hidden"
+          }`}
         >
           {(showAll ? images : images.slice(0, maxThumbnails)).map((image, i) => (
             <div key={i} className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0">
@@ -65,6 +81,7 @@ const RoomGallery = () => {
                 }}
               />
 
+              {/* Button to show more images */}
               {!showAll && i === maxThumbnails - 1 && extraPhotos > 0 && (
                 <button
                   className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
