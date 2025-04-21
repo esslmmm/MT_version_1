@@ -26,38 +26,37 @@ const HospitalList: React.FC = () => {
       <h2 className="text-3xl text-[#000000] font-black mb-2">Hospitals</h2>
       <p className="text-gray-600 mb-6">Popular hospitals</p>
 
-      
-        <div
-          ref={scrollRef}
-          className="flex space-x-6 overflow-x-auto scrollbar-hide"
+      <div
+        ref={scrollRef}
+        className="flex flex-wrap gap-6"
+      >
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 1 * 0.1 }}
+          onClick={() => navigateToHospitalPage()}
+          className="w-[350px] cursor-pointer bg-white rounded-2xl shadow-lg p-4 hover:shadow-2xl transition-shadow duration-300"
         >
-          
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 1 * 0.1 }}
-              onClick={() => navigateToHospitalPage()}
-              className="min-w-[280px] cursor-pointer bg-white rounded-2xl shadow-lg p-4 hover:shadow-2xl transition-shadow duration-300"
-            >
-              <div className="relative w-full h-40 rounded-xl overflow-hidden mb-4">
-                <Image
-                  src="/img/hospital/hospital1.png"
-                  alt="Mae Fah Luang University Medical Center Hospital"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="text-lg text-[#000000] font-bold mb-1">Mae Fah Luang University Medical Center Hospital</h3>
-              <div className="text-gray-500 flex items-center gap-2 text-sm">
-                <FaMapMarkerAlt className="text-red-400" />
-                Chiang Rai, Thailand
-              </div>
-            </motion.div>
-
-        </div>
-
+          <div className="relative w-full h-40 rounded-xl overflow-hidden mb-4">
+            <Image
+              src="/img/hospital/hospital1.png"
+              alt="Mae Fah Luang University Medical Center Hospital"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <h3 className="text-lg text-[#000000] font-bold mb-1">
+            Mae Fah Luang University Medical Center Hospital
+          </h3>
+          <div className="text-gray-500 flex items-center gap-2 text-sm">
+            <FaMapMarkerAlt className="text-red-400" />
+            Chiang Rai, Thailand
+          </div>
+        </motion.div>
+      </div>
     </div>
+
   );
 };
 
