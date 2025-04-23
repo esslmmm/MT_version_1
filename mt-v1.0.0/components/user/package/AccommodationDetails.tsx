@@ -26,31 +26,39 @@ const accommodations = [
   
   const AccommodationDetails = () => {
     return (
-      <div className="p-10 flex justify-center">
+      <div className="p-4 md:p-10 flex flex-col items-center gap-8">
         {accommodations.map((hotel) => (
-          <div key={hotel.id} className="max-w-5xl w-full bg-white p-8 flex flex-col lg:flex-row gap-8">
+          <div
+            key={hotel.id}
+            className="w-full max-w-5xl bg-white p-6 md:p-8 rounded-lg shadow-md flex flex-col lg:flex-row gap-6"
+          >
             {/* Left Section: Hotel Info */}
             <div className="flex-1">
-              <h2 className="text-3xl font-bold">{hotel.name}</h2>
-              <p className="text-gray-600 mt-2">{hotel.address}</p>
-              <a href="https://maps.app.goo.gl/H4JvdSmMiiPFiCsE9" className="text-green-500 font-medium mt-2 flex items-center">
+              <h2 className="text-2xl md:text-3xl text-[#000000] font-bold">{hotel.name}</h2>
+              <p className="text-gray-600 mt-2 text-sm md:text-base">{hotel.address}</p>
+              <a
+                href="https://maps.app.goo.gl/H4JvdSmMiiPFiCsE9"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-green-500 font-medium mt-2 flex items-center text-sm md:text-base"
+              >
                 See map 📍
               </a>
-  
-              <p className="text-gray-700 mt-4">{hotel.description}</p>
-  
+
+              <p className="text-gray-700 mt-4 text-sm md:text-base">{hotel.description}</p>
+
               {/* Facilities List */}
-              <h3 className="text-xl font-semibold mt-6">Facilities</h3>
-              <div className="grid grid-cols-2 gap-3 mt-2 text-gray-700">
+              <h3 className="text-lg md:text-xl font-semibold mt-6 text-[#000000]">Facilities</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2 text-gray-700 text-sm md:text-base">
                 {hotel.facilities.map((facility, index) => (
                   <span key={index}>✔ {facility}</span>
                 ))}
               </div>
             </div>
           </div>
-          
         ))}
       </div>
+
     );
   };
   
