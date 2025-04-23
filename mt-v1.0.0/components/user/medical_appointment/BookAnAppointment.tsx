@@ -97,7 +97,7 @@ export default function MedicalAppointment() {
       <div className="bg-white border border-gray-200 shadow-md rounded-2xl p-6 space-y-6">
         <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <label className="block font-semibold mb-2">📅 Select Date</label>
+            <label className="block text-[#000000] font-semibold mb-2">📅 Select Date</label>
             <DatePicker
               selected={selectedDate}
               onChange={(date) => setSelectedDate(date)}
@@ -110,14 +110,14 @@ export default function MedicalAppointment() {
           </div>
 
           <div>
-            <label className="block font-semibold mb-2">⏰ Select Time</label>
+            <label className="block text-[#000000] font-semibold mb-2">⏰ Select Time</label>
             <div className="grid grid-cols-2 gap-2">
               {timeSlots.map((time) => (
                 <button
                   type="button"
                   key={time}
                   onClick={() => setSelectedTime(time)}
-                  className={`p-2 text-sm border rounded-lg transition ${
+                  className={`p-2 text-[#000000] text-sm border rounded-lg transition ${
                     selectedTime === time
                       ? "bg-green-100 text-green-700 border-green-500 font-medium"
                       : "bg-gray-50 border-gray-300 hover:bg-gray-100"
@@ -142,12 +142,12 @@ export default function MedicalAppointment() {
           </label>
         </div> */}
         <div>
-          <label className="block font-semibold mb-2">📝 Describe Your Symptoms</label>
+          <label className="block text-[#000000] font-semibold mb-2">📝 Describe Your Symptoms</label>
           <textarea
             rows={4}
             value={details}
             onChange={(e) => setDetails(e.target.value)}
-            className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+            className="w-full text-[#000000] p-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
             placeholder="Write here..."
           />
         </div>
