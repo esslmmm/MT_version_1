@@ -102,7 +102,7 @@ export default function MedicalAppointment() {
               selected={selectedDate}
               onChange={(date) => setSelectedDate(date)}
               dateFormat="MMMM d, yyyy"
-              className="border border-gray-300 bg-gray-50 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+              className="border text-[#000000] border-gray-300 bg-gray-50 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
             />
             <p className="text-sm text-gray-500 mt-2">
               {selectedDate ? format(selectedDate, "EEEE, MMMM d, yyyy") : "Choose a date"}
@@ -153,128 +153,133 @@ export default function MedicalAppointment() {
         </div>
       </div>
 
+      <div className="bg-white border border-gray-200 shadow-md rounded-2xl p-4 sm:p-6 space-y-6 w-full max-w-5xl mx-auto">
       {/* Contact Details */}
-      <div className="bg-white border border-gray-200 shadow-md rounded-2xl p-6 space-y-6">
-  <h2 className="text-lg font-semibold mb-4 text-black">Contact Details</h2>
-  <div className="grid grid-cols-2 gap-4">
-    {[
-      { label: "First Name", value: contact.firstName, key: "firstName" },
-      { label: "Last Name", value: contact.lastName, key: "lastName" },
-      { label: "Email", value: contact.email, key: "email" },
-    ].map(({ label, value, key }) => (
-      <label
-        key={key}
-        className="flex flex-col gap-1 p-3 bg-gray-50 border border-gray-300 rounded-lg hover:bg-gray-100 transition"
-      >
-        <span className="font-medium text-sm text-black">{label}</span>
-        <input
-          type="text"
-          value={value}
-          onChange={(e) => setContact({ ...contact, [key]: e.target.value })}
-          className="bg-transparent outline-none text-black"
-        />
-      </label>
-    ))}
-
-    {/* Country Dropdown */}
-    <label className="flex flex-col gap-1 p-3 bg-gray-50 border border-gray-300 rounded-lg hover:bg-gray-100 transition col-span-1">
-      <span className="font-medium text-sm text-black">Country</span>
-      <select
-        value={contact.country}
-        onChange={(e) => {
-          const selected = countries.find(c => c.name === e.target.value);
-          setContact({
-            ...contact,
-            country: e.target.value,
-            dialCode: selected?.dial_code || ""
-          });
-        }}
-        className="bg-transparent outline-none text-black"
-      >
-        <option value="">Select Country</option>
-        {countries.map((c) => (
-          <option key={c.name} value={c.name}>{c.name}</option>
-        ))}
-      </select>
-    </label>
-
-    {/* Dial Code + Phone Number */}
-    <div className="col-span-2 grid grid-cols-2 gap-4">
-      <label className="flex flex-col gap-1 p-3 bg-gray-50 border border-gray-300 rounded-lg hover:bg-gray-100 transition">
-        <span className="font-medium text-sm text-black">Dial Code</span>
-        <select
-          value={contact.dialCode}
-          onChange={(e) => setContact({ ...contact, dialCode: e.target.value })}
-          className="bg-transparent outline-none text-black"
-        >
-          <option value="">Select Code</option>
-          {countries.map((c) => (
-            <option key={c.dial_code} value={c.dial_code}>
-              {c.name} ({c.dial_code})
-            </option>
-          ))}
-        </select>
-      </label>
-
-      <label className="flex flex-col gap-1 p-3 bg-gray-50 border border-gray-300 rounded-lg hover:bg-gray-100 transition">
-        <span className="font-medium text-sm text-black">Phone Number</span>
-        <input
-          type="text"
-          value={contact.phoneNumber}
-          onChange={(e) => setContact({ ...contact, phoneNumber: e.target.value })}
-          className="bg-transparent outline-none text-black"
-        />
-      </label>
-    </div>
-  </div>
-
-
-        {/* Patient Details */}
-        <h2 className="text-lg font-semibold mt-6 mb-4 text-black">Patient Details</h2>
-<div className="grid grid-cols-2 gap-4">
-  {/* Gender */}
-  <div className="col-span-2">
-    <span className="font-medium text-sm text-black">Gender</span>
-    <div className="flex items-center gap-6 mt-2">
-      {["male", "female"].map((g) => (
-        <label key={g} className="flex items-center gap-2 text-black cursor-pointer">
-          <input
-            type="radio"
-            name="gender"
-            value={g}
-            checked={patient.gender === g}
-            onChange={(e) => setPatient({ ...patient, gender: e.target.value })}
-          />
-          {g.charAt(0).toUpperCase() + g.slice(1)}
-        </label>
-      ))}
-    </div>
-  </div>
-
-  {[
-    { label: "First Name", value: patient.firstName, key: "firstName" },
-    { label: "Last Name", value: patient.lastName, key: "lastName" },
-    { label: "Date of Birth", value: patient.dob, key: "dob", type: "date" },
-    { label: "Passport ID", value: patient.passportId, key: "passportId" },
-  ].map(({ label, value, key, type = "text" }) => (
+      <h2 className="text-lg font-semibold text-black">Contact Details</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+  {/* First Name, Last Name, Email */}
+  {[ 
+    { label: "First Name", value: contact.firstName, key: "firstName" },
+    { label: "Last Name", value: contact.lastName, key: "lastName" },
+    { label: "Email", value: contact.email, key: "email" },
+  ].map(({ label, value, key }) => (
     <label
       key={key}
-      className={`flex flex-col gap-1 p-3 bg-gray-50 border border-gray-300 rounded-lg hover:bg-gray-100 transition ${
-        key === "dob" || key === "passportId" ? "col-span-2" : ""
-      }`}
+      className="flex flex-col gap-1 p-3 bg-gray-50 border border-gray-300 rounded-lg hover:bg-gray-100 transition"
     >
       <span className="font-medium text-sm text-black">{label}</span>
       <input
-        type={type}
+        type="text"
         value={value}
-        onChange={(e) => setPatient({ ...patient, [key]: e.target.value })}
+        onChange={(e) => setContact({ ...contact, [key]: e.target.value })}
         className="bg-transparent outline-none text-black"
       />
     </label>
   ))}
+
+  {/* Country Dropdown */}
+  <label className="flex flex-col gap-1 p-3 bg-gray-50 border border-gray-300 rounded-lg hover:bg-gray-100 transition">
+    <span className="font-medium text-sm text-black">Country</span>
+    <select
+      value={contact.country}
+      onChange={(e) => {
+        const selected = countries.find(c => c.name === e.target.value);
+        setContact({
+          ...contact,
+          country: e.target.value,
+          dialCode: selected?.dial_code || ""
+        });
+      }}
+      className="bg-transparent outline-none text-black"
+    >
+      <option value="">Select Country</option>
+      {countries.map((c) => (
+        <option key={c.name} value={c.name}>{c.name}</option>
+      ))}
+    </select>
+  </label>
+
+  {/* Dial Code + Phone Number (responsive 1/3 + 2/3 on sm+, stacked on mobile) */}
+  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:col-span-2">
+    <label className="flex flex-col gap-1 p-3 bg-gray-50 border border-gray-300 rounded-lg hover:bg-gray-100 transition sm:col-span-1">
+      <span className="font-medium text-sm text-black">Dial Code</span>
+      <select
+        value={contact.dialCode}
+        onChange={(e) => setContact({ ...contact, dialCode: e.target.value })}
+        className="bg-transparent outline-none text-black"
+      >
+        <option value="">Select Code</option>
+        {countries.map((c) => (
+          <option key={c.dial_code} value={c.dial_code}>
+            {c.name} ({c.dial_code})
+          </option>
+        ))}
+      </select>
+    </label>
+
+    <label className="flex flex-col gap-1 p-3 bg-gray-50 border border-gray-300 rounded-lg hover:bg-gray-100 transition sm:col-span-2">
+      <span className="font-medium text-sm text-black">Phone Number</span>
+      <input
+        type="text"
+        value={contact.phoneNumber}
+        onChange={(e) => setContact({ ...contact, phoneNumber: e.target.value })}
+        className="bg-transparent outline-none text-black"
+      />
+    </label>
+  </div>
 </div>
 
+
+
+
+
+
+
+      {/* Patient Details */}
+      <h2 className="text-lg font-semibold mt-6 text-black">Patient Details</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {/* Gender */}
+        <div className="col-span-1 sm:col-span-2">
+          <span className="font-medium text-sm text-black">Gender</span>
+          <div className="flex items-center gap-6 mt-2">
+            {["male", "female"].map((g) => (
+              <label key={g} className="flex items-center gap-2 text-black cursor-pointer">
+                <input
+                  type="radio"
+                  name="gender"
+                  value={g}
+                  checked={patient.gender === g}
+                  onChange={(e) => setPatient({ ...patient, gender: e.target.value })}
+                />
+                {g.charAt(0).toUpperCase() + g.slice(1)}
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {[
+          { label: "First Name", value: patient.firstName, key: "firstName" },
+          { label: "Last Name", value: patient.lastName, key: "lastName" },
+          { label: "Date of Birth", value: patient.dob, key: "dob", type: "date" },
+          { label: "Passport ID", value: patient.passportId, key: "passportId" },
+        ].map(({ label, value, key, type = "text" }) => (
+          <label
+            key={key}
+            className="col-span-2 flex flex-col gap-1 p-3 bg-gray-50 border border-gray-300 rounded-lg hover:bg-gray-100 transition"
+          >
+            <span className="font-medium text-sm text-black">{label}</span>
+            <input
+              type={type}
+              value={value}
+              onChange={(e) => setPatient({ ...patient, [key]: e.target.value })}
+              className="bg-transparent outline-none text-black"
+            />
+          </label>
+        ))}
+
       </div>
+    </div>
+
 
       {/* Submit Button */}
       <div className="text-center">
