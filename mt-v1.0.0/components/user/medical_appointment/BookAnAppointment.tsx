@@ -68,9 +68,11 @@ export default function MedicalAppointment() {
       patientGender: patient.gender,
       patientPassportId: patient.passportId,
     };
+    
+    console.log(`${templateParams}`)
 
     emailjs.send(
-      "service_rp6jko5",
+      "service_nzv07dp",
       "template_xk05doq",
       templateParams,
       "spzglw6UCiNIkx_OG"
